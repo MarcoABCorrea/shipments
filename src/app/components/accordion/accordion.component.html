@@ -1,0 +1,16 @@
+<mat-accordion>
+  <mat-expansion-panel *ngFor="let shipments of data">
+    <mat-expansion-panel-header>
+      <mat-panel-title> Ref: {{ shipments.reference }} </mat-panel-title>
+      <mat-panel-description>
+        Status: {{ shipments.status }}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <ng-container *ngTemplateOutlet="table; context: { data: shipments }">
+    </ng-container>
+  </mat-expansion-panel>
+</mat-accordion>
+
+<ng-template #table let-shipments="data">
+  <mtr-table [data]="shipments.cargo_units"></mtr-table>
+</ng-template>
