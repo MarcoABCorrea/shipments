@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ShipmentService } from '@services/shipment.service';
-import { LoginResponse } from '@shared/loginResponse.model';
+import { StorageService } from '@services/storage.service';
 import { Shipment } from '@shared/shipment.model';
 
 @Component({
@@ -10,18 +10,26 @@ import { Shipment } from '@shared/shipment.model';
 })
 export class DashboardComponent implements OnInit {
   shipments = [];
+  loading: boolean = true;
 
-  constructor(private shipmentService: ShipmentService) {}
+  constructor(
+    private shipmentService: ShipmentService,
+    private storageService: StorageService
+  ) {}
 
   ngOnInit(): void {
-    this.shipmentService.login().subscribe((loginResponse: LoginResponse) => {
-      this.getShipments(loginResponse.access_token);
-    });
+    const token = this.storageService.getToken();
+    if (token) {
+      this.getShipments(token);
+    }
   }
 
   public getShipments(accessToken: string): void {
     this.shipmentService
       .getShipments(accessToken)
-      .subscribe((shipments: Array<Shipment>) => (this.shipments = shipments));
+      .subscribe((shipments: Array<Shipment>) => {
+        this.loading = false;
+        this.shipments = shipments;
+      });
   }
 }

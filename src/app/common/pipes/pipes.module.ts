@@ -4,6 +4,6 @@ import { YesNoPipe } from './yes-no.pipe';
 @NgModule({
   declarations: [YesNoPipe],
   imports: [],
-  exports: [],
+  exports: [YesNoPipe],
 })
 export class PipesModule {}

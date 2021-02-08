@@ -1,4 +1,6 @@
-<div id="shipments">
+<div id="shipments" *ngIf="!loading">
   <mtr-header></mtr-header>
   <mtr-dashboard></mtr-dashboard>
 </div>
+
+<mtr-login *ngIf="loading" (onLoginSuccessful)="loading = false"></mtr-login>

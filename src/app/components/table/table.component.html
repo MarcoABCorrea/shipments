@@ -1,7 +1,4 @@
 <table mat-table [dataSource]="data" class="mat-elevation-z8">
-  <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
-
   <ng-container matColumnDef="dimension_x">
     <th mat-header-cell *matHeaderCellDef>Dimension X</th>
     <td mat-cell *matCellDef="let element">{{ element.dimension_x }} cm</td>
@@ -19,12 +16,12 @@
 
   <ng-container matColumnDef="dangerous">
     <th mat-header-cell *matHeaderCellDef>Dangerous</th>
-    <td mat-cell *matCellDef="let element">{{ element.dangerous }}</td>
+    <td mat-cell *matCellDef="let element">{{ element.dangerous | yesNo }}</td>
   </ng-container>
 
   <ng-container matColumnDef="stackable">
     <th mat-header-cell *matHeaderCellDef>Stackable</th>
-    <td mat-cell *matCellDef="let element">{{ element.stackable }}</td>
+    <td mat-cell *matCellDef="let element">{{ element.stackable | yesNo }}</td>
   </ng-container>
 
   <ng-container matColumnDef="created_at">

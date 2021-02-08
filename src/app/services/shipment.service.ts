@@ -4,7 +4,7 @@ import { environment } from '@envs/environment';
 import { LoginRequest } from '@shared/loginRequest.model';
 import { LoginResponse } from '@shared/loginResponse.model';
 import { Shipment } from '@shared/shipment.model';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -13,17 +13,12 @@ export class ShipmentService {
   private basePath: string = environment.BASE_URL;
   private loginPath: string = this.basePath + 'oauth/token';
   private shipmentsPath: string = this.basePath + 'shipments';
+  private loading = new BehaviorSubject(true);
 
   constructor(private http: HttpClient) {}
 
-  public login(): Observable<LoginResponse> {
-    const params: LoginRequest = {
-      grant_type: 'password',
-      email: 'jane@itsmycargo.test',
-      password: 'hellocargo',
-    };
-
-    return this.http.post<LoginResponse>(this.loginPath, params);
+  public login(loginRequest: LoginRequest): Observable<LoginResponse> {
+    return this.http.post<LoginResponse>(this.loginPath, loginRequest);
   }
 
   public getShipments(accessToken: string): Observable<Array<Shipment>> {
