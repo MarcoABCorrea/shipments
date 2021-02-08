@@ -1,12 +1,9 @@
 .mat-expansion-panel {
-  width: 40rem;
-  // display: flex;
+  width: 50rem;
   margin: auto;
 }
 
-.green,
-.yellow,
-.blue {
+.mat-expansion-panel-header-description {
   font-weight: 500;
 }
 

@@ -4,7 +4,7 @@ import { environment } from '@envs/environment';
 import { LoginRequest } from '@shared/loginRequest.model';
 import { LoginResponse } from '@shared/loginResponse.model';
 import { Shipment } from '@shared/shipment.model';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -12,8 +12,8 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class ShipmentService {
   private basePath: string = environment.BASE_URL;
   private loginPath: string = this.basePath + 'oauth/token';
+  private logoutPath: string = this.basePath + 'oauth/signout';
   private shipmentsPath: string = this.basePath + 'shipments';
-  private loading = new BehaviorSubject(true);
 
   constructor(private http: HttpClient) {}
 
@@ -21,13 +21,22 @@ export class ShipmentService {
     return this.http.post<LoginResponse>(this.loginPath, loginRequest);
   }
 
+  public logout(accessToken: string): Observable<any> {
+    return this.http.delete(this.logoutPath, {
+      headers: this.getHeaders(accessToken),
+    });
+  }
+
   public getShipments(accessToken: string): Observable<Array<Shipment>> {
-    const headers = new HttpHeaders({
+    return this.http.get<Array<Shipment>>(this.shipmentsPath, {
+      headers: this.getHeaders(accessToken),
+    });
+  }
+
+  public getHeaders(accessToken: string): HttpHeaders {
+    return new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: `Bearer ${accessToken}`,
-    });
-    return this.http.get<Array<Shipment>>(this.shipmentsPath, {
-      headers,
     });
   }
 }

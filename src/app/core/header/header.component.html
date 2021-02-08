@@ -1,5 +1,15 @@
 <div id="header">
   <mat-toolbar>
     <span class="slogan">Shipments</span>
+    <button class="profile" mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>person</mat-icon>
+    </button>
   </mat-toolbar>
 </div>
+
+<mat-menu #menu="matMenu">
+  <button mat-menu-item (click)="logout()">
+    <mat-icon>logout</mat-icon>
+    <span>Log out</span>
+  </button>
+</mat-menu>

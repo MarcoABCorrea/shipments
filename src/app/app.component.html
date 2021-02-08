@@ -1,5 +1,5 @@
 <div id="shipments" *ngIf="!loading">
-  <mtr-header></mtr-header>
+  <mtr-header (onLogoutSuccessful)="loading = true"></mtr-header>
   <mtr-dashboard></mtr-dashboard>
 </div>
 
