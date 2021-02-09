@@ -4,17 +4,23 @@
 }
 
 .mat-expansion-panel-header-description {
-  font-weight: 500;
-}
+  .green {
+    color: #2f5c05;
+  }
 
-.green {
-  color: #2f5c05;
-}
+  .yellow {
+    color: #adad2a;
+  }
 
-.yellow {
-  color: #adad2a;
-}
+  .blue {
+    color: #0059ff;
+  }
 
-.blue {
-  color: #0059ff;
+  .status {
+    font-weight: 500;
+  }
+
+  .eta {
+    margin-left: auto;
+  }
 }

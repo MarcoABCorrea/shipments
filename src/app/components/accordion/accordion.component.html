@@ -2,23 +2,31 @@
   <mat-expansion-panel *ngFor="let shipments of data">
     <mat-expansion-panel-header>
       <mat-panel-title> Ref: {{ shipments.reference }} </mat-panel-title>
-      <mat-panel-description
-        [ngClass]="
-          shipments.status === 'booked'
-            ? 'yellow'
-            : shipments.status === 'finished'
-            ? 'green'
-            : shipments.status === 'confirmed'
-            ? 'blue'
-            : ''
-        "
-      >
-        Status: {{ shipments.status }}
+      <mat-panel-description>
+        <label
+          class="status"
+          [ngClass]="
+            shipments.status === 'booked'
+              ? 'yellow'
+              : shipments.status === 'finished'
+              ? 'green'
+              : shipments.status === 'confirmed'
+              ? 'blue'
+              : ''
+          "
+          >Status: {{ shipments.status }}</label
+        >
+        <label class="eta"
+          >Arrival (ETA):
+          {{ shipments.planned_eta | date: "dd/MM/yyyy" }}</label
+        >
       </mat-panel-description>
     </mat-expansion-panel-header>
     <ng-container *ngTemplateOutlet="table; context: { data: shipments }">
     </ng-container>
   </mat-expansion-panel>
+
+  <div *ngIf="data.length === 0">No shipments found</div>
 </mat-accordion>
 
 <ng-template #table let-shipments="data">

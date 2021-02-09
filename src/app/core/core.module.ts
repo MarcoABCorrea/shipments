@@ -6,11 +6,17 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSelectModule } from '@angular/material/select';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ComponentsModule } from '../components/components.module';
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './login/login.component';
+
 @NgModule({
-  declarations: [HeaderComponent, LoginComponent],
+  declarations: [HeaderComponent, LoginComponent, DashboardComponent],
   imports: [
     MatToolbarModule,
     MatButtonModule,
@@ -20,7 +26,11 @@ import { LoginComponent } from './login/login.component';
     MatCardModule,
     MatMenuModule,
     MatIconModule,
+    ComponentsModule,
+    MatProgressSpinnerModule,
+    BrowserAnimationsModule,
+    MatSelectModule,
   ],
-  exports: [HeaderComponent, LoginComponent],
+  exports: [HeaderComponent, LoginComponent, DashboardComponent],
 })
 export class CoreModule {}

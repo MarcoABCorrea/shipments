@@ -1,4 +1,3 @@
-import { HttpParams } from '@angular/common/http';
 import {
   HttpClientTestingModule,
   HttpTestingController,
@@ -20,41 +19,5 @@ describe('ShipmentService', () => {
 
   it('should be created', () => {
     expect(service).toBeTruthy();
-  });
-
-  describe('#getWithLocation()', () => {
-    it('should return an Observable<GetWeatherResponse>', () => {
-      spyOn(service, 'appendParams').and.callThrough();
-
-      // service.getWithLocation('Germany', 'Berlin').subscribe((weather) => {
-      //   expect(weather).not.toBe(null);
-      // });
-      const req = httpMock.expectOne(
-        'https://api.openweathermap.org/data/2.5/weather?q=Berlin'
-      );
-      expect(req.request.method).toBe('GET');
-      expect(service.appendParams).toHaveBeenCalled();
-    });
-  });
-
-  describe('#getWithLatLon()', () => {
-    it('should return an Observable<GetWeatherResponse>', () => {
-      // service.getWithLatLon('10', '90').subscribe((weather) => {
-      //   expect(weather).not.toBe(null);
-      // });
-      const req = httpMock.expectOne(
-        'https://api.openweathermap.org/data/2.5/weather?lat=10&lon=90'
-      );
-      expect(req.request.method).toBe('GET');
-    });
-  });
-
-  describe('#appendParams()', () => {
-    it('should return an HttpParams object', () => {
-      // const params = new Params().withCity('berlin');
-      const res = service.appendParams({});
-      expect(res).not.toBe(null);
-      expect(res instanceof HttpParams).toBeTruthy();
-    });
   });
 });

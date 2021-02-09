@@ -1,0 +1,15 @@
+<div id="dashboard">
+  <div class="search-container" *ngIf="!loading">
+    <mat-form-field appearance="fill">
+      <mat-label>Filter shipments</mat-label>
+      <mat-select (selectionChange)="filter($event.value)">
+        <mat-option *ngFor="let filter of filters" [value]="filter.value">
+          {{ filter.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mtr-accordion [data]="shipments"></mtr-accordion>
+  </div>
+  <mat-spinner *ngIf="loading"></mat-spinner>
+</div>
