@@ -26,7 +26,7 @@
     </ng-container>
   </mat-expansion-panel>
 
-  <div *ngIf="data.length === 0">No shipments found</div>
+  <div *ngIf="data?.length === 0">No shipments found</div>
 </mat-accordion>
 
 <ng-template #table let-shipments="data">

@@ -1,0 +1,26 @@
+[
+  {
+    "id": 14,
+    "reference": "99WSDDA",
+    "cargo_type": "fcl",
+    "status": "booked",
+    "origin": "DEHAM",
+    "destination": "CNSHA",
+    "planned_eta": "2019-03-08",
+    "planned_etd": "2019-03-22",
+    "cargo_units": [
+      {
+        "id": 35,
+        "shipment_id": 14,
+        "payload": 1500,
+        "dimension_x": 120,
+        "dimension_y": 100,
+        "dimension_z": 100,
+        "stackable": true,
+        "dangerous": false,
+        "created_at": "2019-03-08T22:26:23.178Z",
+        "updated_at": "2019-03-08T22:26:23.178Z"
+      }
+    ]
+  }
+]

@@ -11,14 +11,14 @@ import { LoginResponse } from '@shared/loginResponse.model';
 })
 export class LoginComponent {
   @Output() onLoginSuccessful = new EventEmitter();
-  data = new LoginRequest();
+  data: LoginRequest = new LoginRequest();
 
   constructor(
     private shipmentService: ShipmentService,
     private storageService: StorageService
   ) {}
 
-  onLogin() {
+  onLogin(): void {
     this.shipmentService
       .login(this.data)
       .subscribe((loginResponse: LoginResponse) => {

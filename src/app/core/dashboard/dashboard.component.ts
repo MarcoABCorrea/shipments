@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ShipmentService } from '@services/shipment.service';
 import { StorageService } from '@services/storage.service';
 import { Shipment } from '@shared/shipment.model';
-import * as moment from 'moment';
+import moment from 'moment';
 
 @Component({
   selector: 'mtr-dashboard',

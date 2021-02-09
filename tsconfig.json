@@ -19,8 +19,11 @@
     "paths": {
       "@envs/*": ["src/environments/*"],
       "@shared/*": ["src/app/shared/*"],
-      "@services/*": ["src/app/services/*"]
-    }
+      "@services/*": ["src/app/services/*"],
+      "@mockData/*": ["src/assets/mock-data/*"]
+    },
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false
